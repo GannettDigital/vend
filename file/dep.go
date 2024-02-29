@@ -5,7 +5,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/nomad-software/vend/output"
+	"github.com/GannettDigital/vend/output"
 )
 
 // ParseDownloadJSON parses the dependency file into a data structure.

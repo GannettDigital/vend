@@ -7,8 +7,11 @@ import (
 
 // Options contains CLI arguments passed to the program.
 type Options struct {
-	Help    bool
-	PkgOnly bool
+	Help     bool
+	Debug    bool
+	Quiet    bool
+	BasePath string
+	Filter   string
 }
 
 // ParseOptions parses the command line options and returns a struct filled with
@@ -17,6 +20,10 @@ func ParseOptions() Options {
 	var opt Options
 
 	flag.BoolVar(&opt.Help, "help", false, "Show help.")
+	flag.BoolVar(&opt.Debug, "debug", false, "Show debugging output.")
+	flag.BoolVar(&opt.Quiet, "quiet", false, "Suppress normal output.")
+	flag.StringVar(&opt.BasePath, "output", "vendor", "Directory to write vendored packages.")
+	flag.StringVar(&opt.Filter, "filter", "", "Filter which files are written to directory.")
 	flag.Parse()
 
 	return opt

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/nomad-software/vend/cli"
-	"github.com/nomad-software/vend/file"
+	"github.com/GannettDigital/vend/cli"
+	"github.com/GannettDigital/vend/file"
 )
 
 func main() {
@@ -13,9 +13,9 @@ func main() {
 		options.PrintUsage()
 
 	} else {
-		cli.UpdateModule()
+		cli.UpdateModule(options)
 
-		dir := file.InitVendorDir()
+		dir := file.InitVendorDir(options)
 		dir.CopyDependencies()
 	}
 }

@@ -4,13 +4,16 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/nomad-software/vend/output"
+	"github.com/GannettDigital/vend/output"
 )
 
 // UpdateModule makes sure the module is updated ready to vendor the
 // dependencies.
-func UpdateModule() {
-	var commands = []string{"tidy", "download", "vendor"}
+func UpdateModule(options Options) {
+	var commands = []string{"download"}
+	if options.BasePath == "vendor" {
+		commands = append(commands, "vendor")
+	}
 
 	for _, command := range commands {
 		cmd := exec.Command("go", "mod", command)

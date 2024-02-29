@@ -1,3 +1,3 @@
-module github.com/nomad-software/vend
+module github.com/GannettDigital/vend
 
 go 1.16
