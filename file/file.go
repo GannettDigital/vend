@@ -121,7 +121,9 @@ func (v *VendorDir) CopyDependencies() {
 			if v.exists(newPath) {
 				v.copy(newPath, oldPath)
 				v.removeAll(newPath)
-			} else {
+			} else if v.filter == nil || v.exists(r.New.Path) {
+				// When filtering the module might be removed entirely because
+				// none of the files match, in which case no copy is needed.
 				v.copy(r.New.Path, oldPath)
 			}
 		}
